@@ -54,11 +54,19 @@
   justify-content: space-between;
 }
 
+.image.hide {
+  display: none;
+}
+
 .image > img {
   width: 40%;
   height: 40%;
   border-radius: 50%;
   margin-top: 10px;
+}
+
+.footer.hide {
+  display: none;
 }
 
 .footer {
