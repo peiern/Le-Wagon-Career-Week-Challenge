@@ -45,7 +45,11 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  border-bottom: 0.5px solid rgb(159, 159, 159);
+  border-bottom: 0.5px solid rgb(113, 113, 113);
+}
+
+.radio:last-child {
+  border-bottom: none;
 }
 
 .image {
@@ -71,8 +75,8 @@
 
 .footer {
   text-align: center;
-  margin: 20px;
-  border-top: 0.5px solid rgb(159, 159, 159);
+  padding: 20px;
+  border-top: 0.5px solid rgb(113, 113, 113);
 }
 
 h6 {
