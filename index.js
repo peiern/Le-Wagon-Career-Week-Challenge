@@ -1,6 +1,5 @@
 const url = 'https://teclead.de/recruiting/radios';
 const stations = document.querySelector('.stations');
-const nowPlaying = document.querySelector('.now-playing');
 
 fetch(url)
 .then(res => res.json())
@@ -17,22 +16,15 @@ fetch(url)
 
     const radioDetails = `
     <div class="radio">
+      <div class="image hide">
+        <i class="fas fa-minus-circle"></i>
+        <img src="${radio.image}">
+        <i class="fas fa-plus-circle"></i>
+      </div>
       ${radio.name}
-      <p><strong>${radio.frequency}</strong></p>
-    </div>
-    <div class="image hide">
-      <i class="fas fa-minus-circle"></i>
-      <img src="${radio.image}">
-      <i class="fas fa-plus-circle"></i>
-    </div>`;
-
-    const playing = `
-    <div class="footer hide">
-      <h6>CURRENTLY PLAYING</h6>
-      <p>${radio.name}</p>
+      <p><strong>${radio.frequency} FM</strong></p>
     </div>`;
     stations.insertAdjacentHTML("beforeend", radioDetails);
-    nowPlaying.insertAdjacentHTML("beforeend", playing);
   });
 
   // addEventListener on click
@@ -40,13 +32,31 @@ fetch(url)
   // hide the rest
   // show footer of clicked radio (if same radio then show, else hide)
 
-  const selecting = document.querySelector(".radio");
-    selecting.addEventListener("click", (event) => {
-      const img = document.querySelector(".image");
-      const foot = document.querySelector(".footer");
-      img.classList.toggle("hide");
-      foot.classList.toggle("hide");
+  const radioStations = Array.from(document.querySelectorAll(".radio"));
 
+  const resetImg = () => {
+    radioStations.forEach(radioStation => {
+      const img = radioStation.querySelector(".image");
+      img.classList.add("hide");
+    })
+  };
+
+  radioStations.forEach(radioStation => {
+    radioStation.addEventListener("click", (event) => {
+
+      resetImg()
+      const img = radioStation.querySelector(".image");
+      img.classList.remove("hide");
+
+      const footerStation = document.querySelector(".footer p");
+      footerStation.innerHTML =  `${radio.name}`;
+
+      // get the current station
+      // const currentStation = "test"
+
+      // // update html in footer
+      // footerStation.innerHTML = currentStation
     });
+  })
 
-  });
+});

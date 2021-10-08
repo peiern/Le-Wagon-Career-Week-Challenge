@@ -1,8 +1,8 @@
 .wrapper {
   width: 50%;
   margin: 0 auto;
-  display: flex;
-  justify-content: center;
+  /* display: flex;
+  justify-content: center; */
 }
 
 .station-details {
